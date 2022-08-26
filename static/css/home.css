@@ -1,0 +1,418 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: black;
+    /* font-family: "sans-serif"; */
+    font-family: "Roboto";
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+main,
+header,
+section,
+aside,
+article,
+nav,
+footer {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.bigwrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+    align-content: center;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: calc(100% - 20px);
+    background-color: white;
+    z-index: 5;
+    /* background-color: #098663; */
+}
+
+.sperator {
+    margin-top: 82px;
+}
+
+.logo {
+    width: 100px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    margin-right: 3px;
+    font-size: 16px;
+    padding: 3px;
+    color: white;
+    background-color: #0FA6A6;
+    /* padding: 10px; */
+    /* border-radius: 50px; */
+    width: 90px;
+    text-align: center;
+}
+
+.link:last-child {
+    margin-right: 0px;
+}
+
+nav a:hover {
+    background-color: #053A3B;
+    transition: 0.5s;
+}
+
+.dropdown {
+    position: absolute;
+    display: none;
+}
+
+.dropdown a {
+    display: block;
+    border-top: 2px solid #053A3B;
+    width: 150px;
+}
+
+.svg_div {
+    width: calc(100% - 20px);
+    height: 190px;
+    position: absolute;
+    margin-top: -70px;
+    z-index: 0;
+}
+
+.growth_img {
+    width: 100%;
+    height: auto;
+}
+
+.services {
+    margin-top: 120px;
+    /* background-image: url('./slide_img/img1.jpg');
+    background-repeat: repeat;
+    background-size: cover; */
+}
+
+.services h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.service {
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: justify;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.3);
+    -ms-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.3);
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(17, 17, 17, 0.3);
+}
+
+.legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+.flex_item {
+    background-color: #76CB60;
+    width: 48%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.flex_item:nth-child(even) {
+    background-color: #0FB7BA;
+}
+
+.service h3 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.contact_us h3 {
+    text-align: center;
+}
+
+.legal h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    border: 3px solid #0D9EA1;
+    border-radius: 50px;
+    padding: 10px;
+    color: white;
+    background-color: #0D9EA1;
+}
+
+.contact_us {
+    background-color: #0A797B;
+    box-shadow: #b36724bd 0px 13px 15px;
+}
+
+.contact_us a {
+    color: black;
+}
+
+.contact_head {
+    width: 140px;
+    margin: 0px auto;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+    letter-spacing: 2.3px;
+}
+
+.contact_flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.mapbox-iframe {
+    border: 2px dotted white;
+    height: 310px;
+    margin: 0px 10px 30px 10px;
+}
+
+.map-frame {
+    width: 100%;
+    height: 100%;
+}
+
+.write_ups div {
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+#socials {
+    text-align: center;
+}
+
+footer {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#footer,
+footer span {
+    width: 100%;
+    text-align: center;
+    color: rgba(230, 230, 230, 0.9);
+    text-indent: 0px
+}
+
+.backToTop {
+    position: fixed;
+    right: 5%;
+    top: 63%;
+    text-align: center;
+    background-color: rgba(1, 1, 1, 0.4);
+    width: 40px;
+    height: 50px;
+    z-index: 150;
+    padding: 2px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    cursor: pointer;
+    display: none;
+}
+
+.backToTop a {
+    color: white;
+    font-size: 30px;
+}
+
+@media screen and (min-width:360px) {
+    .logo {
+        width: 100px;
+    }
+    nav a {
+        margin-right: 5px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width:480px) {
+    * {
+        font-size: 18px;
+    }
+    nav a {
+        margin-right: 10px;
+        /* font-size: 20px; */
+    }
+}
+
+@media screen and (min-width:500px) {
+    .logo {
+        width: 120px;
+    }
+    .sperator {
+        margin-top: 94px;
+    }
+    .growth_img {
+        width: 70%;
+        height: auto;
+        margin-left: 15%;
+    }
+    .svg_div {
+        margin-top: -90px;
+    }
+    .flex_item {
+        width: 33%;
+    }
+    /* .services h2 {
+        margin: 50px 0px 20px 0px;
+    } */
+}
+
+@media screen and (min-width:843px) {
+    .svg_div {
+        margin-top: -110px;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    * {
+        font-size: 20px;
+    }
+    .logo {
+        width: 150px;
+    }
+    .sperator {
+        margin-top: 100px;
+    }
+    nav a {
+        font-size: 20px;
+    }
+    nav a {
+        margin-right: 20px;
+    }
+    .svg_div {
+        margin-top: -100px;
+    }
+    .service {
+        width: 480px;
+    }
+}
+
+@media screen and (min-width:1520px) {
+    .bigwrapper {
+        width: 1500px;
+        margin: 0px auto;
+    }
+    header {
+        width: 1500px;
+    }
+    .svg_div {
+        width: 1500px;
+        margin-top: -180px;
+    }
+    .services {
+        margin-top: 38px;
+    }
+}
+
+
+/* Color Theme Swatches in Hex */
+
+.zinaago-1-hex {
+    color: #0A797A;
+}
+
+.zinaago-2-hex {
+    color: #0FB7BA;
+}
+
+.zinaago-3-hex {
+    color: #053A3B;
+}
+
+.zinaago-4-hex {
+    color: #10C4C7;
+}
+
+.zinaago-5-hex {
+    color: #0D9EA1;
+}
+
+
+/* Color Theme Swatches in RGBA */
+
+.zinaago-1-rgba {
+    color: rgba(10, 121, 122, 1);
+}
+
+.zinaago-2-rgba {
+    color: rgba(15, 183, 186, 1);
+}
+
+.zinaago-3-rgba {
+    color: rgba(5, 58, 59, 1);
+}
+
+.zinaago-4-rgba {
+    color: rgba(16, 196, 199, 1);
+}
+
+.zinaago-5-rgba {
+    color: rgba(13, 158, 161, 1);
+}
+
+
+/* Color Theme Swatches in HSLA */
+
+.zinaago-1-hsla {
+    color: hsla(180, 84, 25, 1);
+}
+
+.zinaago-2-hsla {
+    color: hsla(181, 85, 39, 1);
+}
+
+.zinaago-3-hsla {
+    color: hsla(181, 84, 12, 1);
+}
+
+.zinaago-4-hsla {
+    color: hsla(180, 85, 42, 1);
+}
+
+.zinaago-5-hsla {
+    color: hsla(181, 85, 34, 1);
+}
