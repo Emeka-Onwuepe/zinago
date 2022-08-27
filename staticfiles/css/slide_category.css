@@ -1,0 +1,497 @@
+.slide_category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -12px;
+    /* padding-top: 10px; */
+    background-color: #0FB7BA;
+    /* z-index: 2; */
+}
+
+.slider {
+    /* width: 500px;
+    height: auto; */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    /* width: 500px;
+    height: auto; */
+}
+
+#slidetext {
+    position: absolute;
+    top: 90px;
+    padding: 10px;
+    text-align: center;
+    margin: 0px auto;
+    font-size: 18px;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    /* width: 20%; */
+    transition: 2s;
+}
+
+.slide a {
+    position: absolute;
+}
+
+.overlay {
+    position: absolute;
+    background-color: #10C4C7A3 !important;
+    width: calc(100% - 30px);
+    height: 40%;
+}
+
+.catlink2 {
+    font-size: 20px;
+    width: 80%;
+    text-align: center;
+    padding: 5px;
+}
+
+
+/* .slide img {
+    width: 500px;
+    height: auto;
+} */
+
+.navigation-manual {
+    position: absolute;
+    /* margin-top: -10px; */
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.slider,
+.slides,
+.slide img,
+.navigation-manual,
+.navigation-auto {
+    width: 280px;
+    height: auto;
+}
+
+.manual-btn {
+    border: 1px solid White;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    z-index: 1;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background: #F7BF8D3B;
+    z-index: 1;
+}
+
+#radio1:checked~.first {
+    margin-left: 0px;
+}
+
+#radio2:checked~.first {
+    margin-left: -280px;
+}
+
+#radio3:checked~.first {
+    margin-left: -560px;
+}
+
+#radio4:checked~.first {
+    margin-left: -840px;
+}
+
+
+/* #radio5:checked~.first {
+    margin-left: 0px;
+} */
+
+.navigation-auto {
+    position: absolute;
+    display: flex;
+    /* width: 500px; */
+    justify-content: center;
+    margin-top: 194px;
+    z-index: 1;
+}
+
+.navigation-auto div {
+    border: 1px solid White;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+    z-index: 1;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
+    background-color: White;
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
+    background-color: White;
+}
+
+#radio3:checked~.navigation-auto .auto-btn3 {
+    background-color: White;
+}
+
+#radio4:checked~.navigation-auto .auto-btn4 {
+    background-color: White;
+}
+
+@media screen and (min-width:320px) {
+    .overlay {
+        width: calc(100% - 40px);
+    }
+}
+
+@media screen and (min-width:342px) {
+    .overlay {
+        width: calc(100% - 45px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:360px) {
+    .slider,
+    .slides,
+    .slide img,
+    .navigation-manual,
+    .navigation-auto {
+        width: 340px;
+        height: auto;
+    }
+    #radio2:checked~.first {
+        margin-left: -340px;
+    }
+    #radio3:checked~.first {
+        margin-left: -680px;
+    }
+    #radio4:checked~.first {
+        margin-left: -1020px;
+    }
+    .navigation-auto {
+        margin-top: 233px;
+    }
+    .overlay {
+        width: 94.5%;
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:363px) {
+    .overlay {
+        width: 93%;
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:380px) {
+    .overlay {
+        width: 90%;
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:410px) {
+    .overlay {
+        width: calc(100% - 70px);
+        height: 40%;
+    }
+}
+
+
+/* @media screen and (min-width:410px) {
+    .overlay {
+        width: calc(100% - 60px);
+        height: 40%;
+    }
+} */
+
+@media screen and (min-width:460px) {
+    .slider,
+    .slides,
+    .slide img,
+    .navigation-manual,
+    .navigation-auto {
+        width: 440px;
+        height: auto;
+    }
+    #radio2:checked~.first {
+        margin-left: -440px;
+    }
+    #radio3:checked~.first {
+        margin-left: -880px;
+    }
+    #radio4:checked~.first {
+        margin-left: -1320px;
+    }
+    .navigation-auto {
+        margin-top: 300px;
+    }
+    .overlay {
+        width: calc(100% - 20px);
+        height: 40%;
+    }
+    #slidetext {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width:470px) {
+    .overlay {
+        width: calc(100% - 30px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:480px) {
+    /* .slide_category {
+        margin-top: -16px;
+        padding-top: 10px;
+    } */
+    .slider,
+    .slides,
+    .slide img,
+    .navigation-manual,
+    .navigation-auto {
+        width: 460px;
+        height: auto;
+    }
+    #radio2:checked~.first {
+        margin-left: -460px;
+    }
+    #radio3:checked~.first {
+        margin-left: -920px;
+    }
+    #radio4:checked~.first {
+        margin-left: -1380px;
+    }
+    .navigation-auto {
+        margin-top: 315px;
+    }
+    .overlay {
+        width: calc(100% - 20px);
+        height: 40%;
+    }
+    .catlink2 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width:490px) {
+    .overlay {
+        width: calc(100% - 30px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:500px) {
+    #slidetext {
+        top: 100px;
+    }
+}
+
+@media screen and (min-width:510px) {
+    .overlay {
+        width: calc(100% - 50px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:520px) {
+    .slide_category {
+        margin-top: -15px;
+    }
+    .slider,
+    .slides,
+    .slide img,
+    .navigation-manual,
+    .navigation-auto {
+        width: 500px;
+        height: auto;
+    }
+    #radio2:checked~.first {
+        margin-left: -500px;
+    }
+    #radio3:checked~.first {
+        margin-left: -1000px;
+    }
+    #radio4:checked~.first {
+        margin-left: -1500px;
+    }
+    .navigation-auto {
+        margin-top: 340px;
+    }
+    .overlay {
+        width: calc(100% - 20px);
+        height: 40%;
+    }
+    .catlink2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width:530px) {
+    .overlay {
+        width: calc(100% - 30px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:550px) {
+    .overlay {
+        width: calc(100% - 50px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:590px) {
+    .overlay {
+        width: calc(100% - 60px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:610px) {
+    .overlay {
+        width: calc(100% - 90px);
+        height: 40%;
+    }
+}
+
+@media screen and (min-width:670px) {
+    .overlay {
+        width: calc(100% - 140px);
+        height: 40%;
+    }
+    .catlink2 {
+        font-size: 26px;
+    }
+}
+
+@media screen and (min-width:770px) {
+    .overlay {
+        width: calc(100% - 240px);
+        height: 40%;
+    }
+    .catlink2 {
+        font-size: 28px;
+    }
+    #slidetext {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width:800px) {
+    .slide_category {
+        margin-top: -15px;
+    }
+    .overlay {
+        width: 70%;
+        height: 60%;
+    }
+    .slider,
+    .slides,
+    .slide img,
+    .navigation-manual,
+    .navigation-auto {
+        width: 750px;
+        height: auto;
+    }
+    #radio2:checked~.first {
+        margin-left: -750px;
+    }
+    #radio3:checked~.first {
+        margin-left: -1500px;
+    }
+    #radio4:checked~.first {
+        margin-left: -2250px;
+    }
+    .navigation-auto {
+        margin-top: 508px;
+    }
+    .overlay {
+        width: 94.5%;
+        height: 70%;
+    }
+    .catlink2 {
+        font-size: 30px;
+    }
+    #slidetext {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width:830px) {
+    .overlay {
+        width: 91%;
+        height: 70%;
+    }
+    #slidetext {
+        top: 80px;
+    }
+    .navigation-auto {
+        margin-top: 480px;
+    }
+    .navigation-manual {
+        top: 558px;
+    }
+}
+
+@media screen and (min-width:900px) {
+    .overlay {
+        width: calc(100% - 140px);
+        height: 70%;
+    }
+    .catlink2 {
+        font-size: 34px;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .navigation-manual {
+        top: 564px;
+    }
+}
+
+@media screen and (min-width:1010px) {
+    .overlay {
+        width: calc(100% - 240px);
+        height: 70%;
+    }
+}
+
+@media screen and (min-width:1210px) {
+    .overlay {
+        width: calc(100% - 440px);
+        height: 70%;
+    }
+}
+
+@media screen and (min-width:1500px) {
+    .overlay {
+        width: 60%;
+        height: 65%;
+    }
+    .catlink2 {
+        font-size: 36px;
+    }
+}
