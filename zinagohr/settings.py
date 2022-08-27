@@ -25,7 +25,8 @@ SECRET_KEY = os.getenv("SECRET_KEY_8")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["zinagohrsolutions.ng","www.zinagohrsolutions.ng","*zinagohrsolutions.ng"]
+ALLOWED_HOSTS = ["zinagohrsolutions.ng","www.zinagohrsolutions.ng",
+                 "https://zinagohrsolutions.ng",'127.0.0.1']
 
 
 # Application definition
