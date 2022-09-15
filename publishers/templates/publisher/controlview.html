@@ -1,0 +1,71 @@
+{% extends 'publisher/register.html' %} {% block nav %}
+<form action="{% url 'login:logoutView' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Sign Out</button>
+</form>
+<form action="{% url 'publisher:publisherView' user.username 0 'view' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Welcome Page</button>
+</form>
+{% endblock nav %} {% block main %}
+<strong><p style="margin-top: 135px">{{section}}</p></strong> {% if article %}
+<p style="padding:10px 20px 0px 10px">You have written {{article|length}} post{{article|pluralize}}.</p>
+{% else %}
+<p>You have not made any post in this section.</p>
+{% endif %}
+
+<ol class="controlList">
+    {% for article in article %}
+    <div class="controlBox">
+        <li>
+            <p>{{article}}</p>
+        </li>
+        <form action="{% url 'publisher:editView' user.username article.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Edit</button>
+        </form>
+        <form action="{% url 'publisher:articlePublisherView' article.id article.title_slug %}" method="post">
+            {% csrf_token %}
+            <button type="submit">View</button>
+        </form>
+
+        <form action="{% url 'publisher:articleDeleteView' article.id  %}" method="post">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Are you sure you want to delete this article ?')">Delete</button>
+        </form>
+
+        {% if article.publish and article.still_open %}
+        <p>Published and still open</p>
+        <form action="{% url 'publisher:close' article.id 'close' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Are you sure you want to close this applications ?')">Close</button>
+        </form>
+        <form action="{% url 'applications:applications' article.id  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Applications</button>
+        </form>
+        <form action="{% url 'publisher:articleWithdrawView' article.id  %}" method="post">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Are you sure you want to withdraw this application ?')">Withdraw</button>
+        </form>
+        {% elif article.publish and not article.still_open %}
+        <p>Published and closed</p>
+        <form action="{% url 'publisher:close' article.id 'open' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Are you sure you want to open this applications ?')">Open</button>
+        </form>
+        <form action="{% url 'applications:applications' article.id  %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Applications</button>
+        </form>
+        <form action="{% url 'publisher:articleWithdrawView' article.id  %}" method="post">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Are you sure you want to withdraw this application ?')">Withdraw</button>
+        </form>
+        {% else %}
+        <p>Unpublished</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+</ol>
+{% endblock main %}

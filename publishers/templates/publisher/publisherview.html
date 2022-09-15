@@ -1,0 +1,59 @@
+{% extends 'publisher/register.html' %} {% block nav %}
+<form action="{% url 'publisher:editProfile' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Edit Profile</button>
+</form>
+<form action="{% url 'login:logoutView' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Sign Out</button>
+</form>
+{% endblock nav %} {% block main %} {% if messages %} {% for message in messages %}
+<p style="color: green">{{ message }}</p>
+{% endfor %} {% endif %}
+<strong>
+    <p> Welcome {{user.first_name}} {{user.last_name}}.</p>
+</strong>
+<form action="{% url 'publisher:publisherView' user.username sectionId action %}" method="post">
+    {% csrf_token %} {{form}}
+    <button type="submit" class="submit addbutton">
+        
+        {% if action == "add" %}
+            ADD
+        {% else %}
+            UPDATE
+        {% endif %}
+            
+    </button>
+</form>
+
+<section class="list_items">
+    {% for section in sections %}
+    <div class="items">
+        <div class="innerItem">
+            <p style="margin-right:20px;"><a href="{% url 'publisher:controlView' section.id %}">{{section.Name}}</a></p>
+            <a class="delete" href="{% url 'publisher:publisherView' user.username section.id 'delete' %}">
+                <button> Delete</button>
+            </a>
+            <a href="{% url 'publisher:publisherView' user.username section.id 'edit' %}">
+                <button>
+                    Edit
+                    </button>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<form action="{% url 'publisher:articleCreateView' user.username %}" method="post">
+    <fieldset style="margin-top: 20px">
+        <legend>CREATE A NEW ARTICLE</legend>
+        {% csrf_token %} {% for field in article_form %}
+        <div class="formfield">
+            {{field.errors}} {{field.label_tag}} {{field}} {% if field.help_text %}
+            <p class="help">{{field.help_text|safe}}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input class="submitButton" type="submit" value="create">
+    </fieldset>
+</form>
+{% endblock main %}

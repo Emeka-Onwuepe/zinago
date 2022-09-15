@@ -1,0 +1,45 @@
+{% extends 'home/homeview.html' %} {% block meta_tags %} {% load static %}
+<title>Page not Found</title>
+{% endblock meta_tags %} {% block sideNav %}
+
+{% if articles %}
+<h3 id=""><a href="{% url 'frontview:sectionView' section %}">
+    {{section}} JOB POSTS</a></h3>
+<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search topics" id="myInput">
+<ul id="sideNavUL">
+    {% for articles in articles %} 
+    <li><a class="a" href="{% url 'homeview:articleView' articles.id articles.title_slug %}">{{articles}}</a></li>
+     {% endfor %}
+</ul>
+{% else %}
+<h3 id="">{{section}} Job Posts</h3>
+<p>No vacancies at the moment</p>
+{% endif %}
+    
+
+{% endblock sideNav %} {% block mainHeading %}
+<div id="mainhead" class="mainhead">
+    <h1 id="mainHeading">Post not found</h1>
+</div>
+{% endblock mainHeading %} {% block main %}
+<article class="article">
+    <p>The post you seek seems to be under review. Please, check back later.</p>
+</article>
+{% endblock main %} {% block ads %} {% endblock ads %} {% block mostviewed %}
+
+{% if mostviewed %}
+<div id="" class="articleInnerBox" style="clear:both;background-color:#056fb6">
+    <h2 style="text-align:center;color:#f9f9f9;text-shadow: 2px 1px black;">Most Viewed Articles</h2>
+    {% for article in mostviewed %} 
+    <section class="articleDisplayBox">
+        <h3><a href="{% url 'homeview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
+        {{article.bodySnippet|safe}}
+        <p>Published By {% for publisher in article.publisher.all %}
+            <a href="{% url 'homeview:publisherPage' publisher.id %}">{{publisher}} </a> {% endfor %}
+        </p>
+        <p class="pub_date">{{article.mod_date}}</p>
+    </section>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock mostviewed %} {% block news %} {% endblock news %}

@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
+    'login.apps.LoginConfig',
+    'publishers.apps.PublishersConfig',
+    'application.apps.ApplicationConfig',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +82,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'zinago',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PASSWORD': '',
+        'PORT': ''
     }
 }
 

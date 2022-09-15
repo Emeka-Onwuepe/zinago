@@ -1,0 +1,56 @@
+{% extends 'publisher/register.html' %} {% block nav %}
+<form action="{% url 'login:logoutView' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Sign Out</button>
+</form>
+<form action="{% url 'publisher:publisherView' user.username 0 'view' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Welcome Page</button>
+</form>
+{% endblock nav %} {% block main %}
+<strong><p style="margin-top: 135px">{{post}}</p></strong> {% if total %}
+<p style="padding:10px 20px 0px 10px">You have recieved {{total}} application{{total|pluralize}}.</p>
+{% else %}
+<p>This Job Posting has not recieved any application yet.</p>
+{% endif %}
+<section class='applications'>
+    {% for application in applications %}
+    <div>
+        <div>
+            <div>
+                <p>{{application.evelator_speech}}</p>
+            </div>
+            <p>Name: {{application.full_name}}</p>
+            <p>Email: {{application.email}}</p>
+            <p>Phone Number: {{application.phone_number}}</p>
+            <p>Address: {{application.address}}</p>
+            <p><a target="_blank" href="{{application.cv.url}}">View CV</a></p>
+            <a href="{% url 'applications:process' application.id 'select' %}"><button>Select</button></a>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</section>
+
+<section class='selected'>
+    {% for application in selected %}
+    <div>
+        <div>
+            <p>Name: {{application.full_name}}</p>
+            <p>Email: {{application.email}}</p>
+            <p>Phone Number: {{application.phone_number}}</p>
+            <p>Address: {{application.address}}</p>
+            <p><a target="_blank" href="{{application.cv.url}}">View CV</a></p>
+            {% if application.employed %}
+            <p> <strong>Employed</strong> </p>{% else %}
+            <a href="{% url 'applications:process' application.id 'unselect' %}"><button>Unselect</button></a>
+            <a href="{% url 'applications:process' application.id 'employed' %}"><button>employed</button></a> {% endif %}
+
+        </div>
+
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock main %}
