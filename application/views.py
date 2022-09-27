@@ -7,7 +7,12 @@ from .models import Application
 # Create your views here.
 @login_required(login_url="login:loginView")
 def applicationView(request, article_id):
-    post = Article.objects.get(id=article_id)
+    post = None
+    try: 
+        post = Article.objects.get(id=article_id)
+    except Article.DoesNotExist:
+        return HttpResponseRedirect(reverse("publisher:publisherView",
+        kwargs={"username":request.user.username,"sectionId":0,"action":"add"}))
     applications = post.post_applications.filter(selected=False)
     selected = post.post_applications.filter(selected=True)
     total = len(applications) + len(selected)

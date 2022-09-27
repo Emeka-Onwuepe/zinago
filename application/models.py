@@ -7,7 +7,7 @@ class Application(models.Model):
     job = models.ForeignKey(Article, verbose_name="post", 
                             on_delete=models.CASCADE,related_name="post_applications")
     full_name = models.CharField("full_name", max_length=100)
-    email = models.EmailField("email", max_length=50,unique=True)
+    email = models.EmailField("email", max_length=50)
     phone_number = models.CharField('phone_number', max_length=50)
     address = models.CharField('address', max_length=256)
     evelator_speech = models.TextField('evelator_speech')

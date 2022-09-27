@@ -9,7 +9,7 @@
 <meta property="og:image" content="{% static 'CSS/logo.png' %}" />
 <meta name="author" content="Emeka Casper Onwuepe " /> {% endblock meta_tags %} {% block sideNav %} {% if articles %}
 <h3 id="">{{section}} Job Posts</h3>
-<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search topics" id="myInput">
+<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search job sections" id="myInput">
 <ul id="sideNavUL">
     {% for article in articles %}
     <li><a class="a" href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></li>
@@ -20,7 +20,7 @@
 <p>No vacancies at the moment</p>
 {% endif %} {% endblock sideNav %} {% block mainHeading %}
 <div id="mainhead" class="mainhead">
-    <h1 id="mainHeading">{{section}}</h1>
+    <h2 id="mainHeading">{{section}}</h2>
 </div>
 {% endblock mainHeading %} {% block main %} {% if articles %}
 <div class="articleBox">
@@ -28,25 +28,25 @@
         {% for article in articles %}
         <section class="articleDisplayBox">
             <h3><a href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
-            {% if article.image %}
-            <img class="" src="{{article.image.url}}" alt="{{article.image_description}}"> {% endif %}
+            {% comment %} {% if article.image %}
+            <img class="" src="{{article.image.url}}" alt="{{article.image_description}}"> {% endif %} {% endcomment %}
             <p>{{article.bodySnippet|safe}}</p>
-            <p class="pub_date">Publication Date{{article.mod_date}}</p>
+            <p class="pub_date"> {{article.mod_date}}</p>
         </section>
         {% endfor %}
     </div>
 </div>
 {% else %}
 <p>No available Job opening, check back later.</p> {% endif %} {% endblock main %} {% block ads %} {% endblock ads %} {% block mostviewed %} {% if mostviewed %}
-<div id="" class="articleInnerBox" style="clear:both;background-color:#056fb6">
-    <h2 style="text-align:center;color:#f9f9f9;text-shadow: 2px 1px black;">Most Viewed Articles</h2>
+<h2>Most Viewed Job Posts</h2>
+<div id="" class="articleInnerBox" >
     {% for article in mostviewed %} {% if article.publish %}
     <section class="articleDisplayBox">
         <h3><a href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
-        {% if article.image %}<img class="" src="{{article.image.url}}" alt="{{article.image_description}}">{% endif %}
+        {% comment %} {% if article.image %}<img class="" src="{{article.image.url}}" alt="{{article.image_description}}">{% endif %} {% endcomment %}
         <p>{{article.bodySnippet|safe}}</p>
 
-        <p class="pub_date">Publication Date: {{article.mod_date}}</p>
+        <p class="pub_date"> : {{article.mod_date}}</p>
     </section>
     {% endif %} {% endfor %}
 </div>

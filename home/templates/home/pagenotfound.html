@@ -5,10 +5,10 @@
 {% if articles %}
 <h3 id=""><a href="{% url 'frontview:sectionView' section %}">
     {{section}} JOB POSTS</a></h3>
-<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search topics" id="myInput">
+<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search posts" id="myInput">
 <ul id="sideNavUL">
-    {% for articles in articles %} 
-    <li><a class="a" href="{% url 'homeview:articleView' articles.id articles.title_slug %}">{{articles}}</a></li>
+    {% for article in articles %} 
+    <li><a class="a" href="{% url 'frontview:articleView' article.id article.title_slug  %}">{{article}}</a></li>
      {% endfor %}
 </ul>
 {% else %}
@@ -26,20 +26,19 @@
     <p>The post you seek seems to be under review. Please, check back later.</p>
 </article>
 {% endblock main %} {% block ads %} {% endblock ads %} {% block mostviewed %}
-
 {% if mostviewed %}
-<div id="" class="articleInnerBox" style="clear:both;background-color:#056fb6">
-    <h2 style="text-align:center;color:#f9f9f9;text-shadow: 2px 1px black;">Most Viewed Articles</h2>
-    {% for article in mostviewed %} 
+<h2>Most Viewed Job Posts</h2>
+<div id="" class="articleInnerBox">
+
+    {% for article in mostviewed %}
     <section class="articleDisplayBox">
-        <h3><a href="{% url 'homeview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
-        {{article.bodySnippet|safe}}
-        <p>Published By {% for publisher in article.publisher.all %}
-            <a href="{% url 'homeview:publisherPage' publisher.id %}">{{publisher}} </a> {% endfor %}
-        </p>
-        <p class="pub_date">{{article.mod_date}}</p>
+        <h3><a href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
+        <!-- {% if article.image %}
+        <img class="" src="{{article.image.url}}" alt="{{article.image_description}}">{% endif %} -->
+        <p>{{article.bodySnippet|safe}}</p>
+        <p class="pub_date"> {{article.mod_date}}</p>
     </section>
     {% endfor %}
 </div>
-{% endif %}
-{% endblock mostviewed %} {% block news %} {% endblock news %}
+{% endif %} 
+{% endblock mostviewed %} {% block news %}{% include './contactus.html' %} {% endblock news %}

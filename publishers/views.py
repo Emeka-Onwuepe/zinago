@@ -71,7 +71,8 @@ def editProfilePro(request):
         username = user.username
         messages.add_message(request, messages.INFO,
                              "Profile Updated Successfully")
-        return HttpResponseRedirect(reverse("publisher:publisherView", kwargs={"username": username}))
+        return HttpResponseRedirect(reverse("publisher:publisherView", kwargs={"username":request.user.username,
+                                                                               "sectionId":0,"action":"add"}))
 
 @login_required(login_url="login:loginView")
 def publisherView(request, username,sectionId,action):
@@ -188,20 +189,19 @@ def articlePublisherView(request, article_id, article_slug):
 def publishView(request, article_id, article_slug):
     user = request.user
     article = Article.objects.get(pk=article_id)
-    if request.method == "POST":
-        form = PublishArticleForm(request.POST, instance=article)
-        if form.is_valid():
-            removeaddedslug = article.title_slug
-            article.title_slug = re.sub(
-                r"(-transformedslugdjango)", "", removeaddedslug)
-            article.save()
-            form.save()
-            messages.add_message(request, messages.INFO,
+    form = PublishArticleForm(request.POST, instance=article)
+    if form.is_valid():
+        removeaddedslug = article.title_slug
+        article.title_slug = re.sub(
+            r"(-transformedslugdjango)", "", removeaddedslug)
+        article.save()
+        form.save()
+        messages.add_message(request, messages.INFO,
                                  "Article published Successfully")
-            return render(request, "publisher/articlePublisherView.html",
+        return render(request, "publisher/articlePublisherView.html",
                           {"article": article, "user": user})
-        else:
-            return render(request, "publisher/articlePublisherView.html",
+    else:
+        return render(request, "publisher/articlePublisherView.html",
                           {"article": article, "user": user, "message": "An Error occured"})
 
 
@@ -216,15 +216,17 @@ def controlView(request,sectionId):
 
 @login_required(login_url="login:loginView")
 def editView(request, username, article_id):
-    article = Article.objects.get(pk=article_id)
-    formsets = inlineformset_factory(
-        Article, Sections, form=SectionForm, extra=1)
-    SectionForms = formsets(instance=article)
-    form = ArticleModelForm(instance=article)
     # referenceForm = ReferenceForm(instance=article)
     if request.method == "POST":
-        return render(request, "publisher/editview.html", {'form': form, 'sectionsForm': SectionForms, 'article': article})
-    return HttpResponseRedirect(reverse('publisher:controlView', kwargs={"username": username}))
+        article = Article.objects.get(pk=article_id)
+        formsets = inlineformset_factory(
+        Article, Sections, form=SectionForm, extra=1)
+        SectionForms = formsets(instance=article)
+        form = ArticleModelForm(instance=article)
+        return render(request, "publisher/editview.html", {'form': form, 'sectionsForm': SectionForms,
+                                                           'article': article})
+    return HttpResponseRedirect(reverse("publisher:publisherView",
+            kwargs={"username":request.user.username,"sectionId":0,"action":"add"}))
 
 
 @login_required(login_url="login:loginView")
@@ -249,7 +251,8 @@ def editPro(request, username, article_id):
         else:
             return render(request, "publisher/editview.html", {'form': form, 'sectionsForm': SectionForms, 'article': article})
 
-    return HttpResponseRedirect(reverse('publisher:controlView', kwargs={"username": username}))
+    return HttpResponseRedirect(reverse("publisher:publisherView",
+            kwargs={"username":request.user.username,"sectionId":0,"action":"add"}))
 
 
 @login_required(login_url="login:loginView")

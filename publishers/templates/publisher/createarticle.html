@@ -4,10 +4,6 @@
     <button type="submit">Sign Out</button>
 </form>
 
-<form action="{% url 'publisher:publisherView' user.username 0 'view' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Welcome Page</button>
-</form>
 {% endblock nav %} {% block main %}
 <div id="buttonDiv">
     <button type="button" data-command="bold" class="tool-btn"><img class="intLink" title="Bold"
@@ -51,7 +47,7 @@
         <option value="h6">H6</option>
     </select>
 </div>
-<form action="{% url 'publisher:articleCreationView' user.username article.id %}" enctype="multipart/form-data" method="post">
+<form style='margin-top:170px' action="{% url 'publisher:articleCreationView' user.username article.id %}" enctype="multipart/form-data" method="post">
     <fieldset>
         <legend>CREATE A NEW ARTICLE</legend>
         {% csrf_token %} {% for field in form %}

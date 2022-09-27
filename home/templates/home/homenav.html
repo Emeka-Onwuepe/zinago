@@ -1,0 +1,31 @@
+{% comment %} <div class="drop gnav">
+    <a class="link" href="#">Services</a>
+    <div class="dropdown">
+        <a class="link" href="{% url 'frontview:legalView' %}">Legal</a>
+        <a class="link" href="{% url 'frontview:hrView' %}">Human Resource</a>
+    </div>
+</div> {% endcomment %}
+
+{% if sorted_sections  %}
+<div class="drop2 gnav">
+    <a class="link" href="#">Jobs</a>
+    <div class="dropdown2">
+        {% for section in sorted_sections  %}
+        <a class="link" href="{% url 'frontview:sectionView' section %}">{{section}}</a>
+    {% endfor %}
+    </div>
+</div>
+{% endif %}
+    
+<div class='gnav'>
+    <a class="link" href="#contact">Contact</a>
+</div>
+
+<div class="gnav">
+    <a class="link" href="{% url 'frontview:aboutView' %}">About</a>
+</div>
+<div id="toggle" onclick="show()" class="toggle">
+    <span></span>
+    <span></span>
+    <span class="last"></span>
+</div>

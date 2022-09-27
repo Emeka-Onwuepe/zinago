@@ -3,54 +3,73 @@
     {% csrf_token %}
     <button type="submit">Sign Out</button>
 </form>
-<form action="{% url 'publisher:publisherView' user.username 0 'view' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Welcome Page</button>
-</form>
+
 {% endblock nav %} {% block main %}
-<strong><p style="margin-top: 135px">{{post}}</p></strong> {% if total %}
-<p style="padding:10px 20px 0px 10px">You have recieved {{total}} application{{total|pluralize}}.</p>
+<h1 style="margin-top: 125px">{{post}}</h1> {% if total %}
+<p style="padding:10px 20px 0px 10px">You have recieved {{total}} application{{total|pluralize}}. {{selected|length}} selected</p>
 {% else %}
 <p>This Job Posting has not recieved any application yet.</p>
 {% endif %}
-<section class='applications'>
+
+<section class='applications list_items'>
     {% for application in applications %}
-    <div>
-        <div>
+    <div class="items">
+        <div class="innerItem">
             <div>
                 <p>{{application.evelator_speech}}</p>
             </div>
-            <p>Name: {{application.full_name}}</p>
-            <p>Email: {{application.email}}</p>
-            <p>Phone Number: {{application.phone_number}}</p>
-            <p>Address: {{application.address}}</p>
-            <p><a target="_blank" href="{{application.cv.url}}">View CV</a></p>
-            <a href="{% url 'applications:process' application.id 'select' %}"><button>Select</button></a>
-
+            <div class='details'>
+                <p><strong>Name:</strong> {{application.full_name}}</p>
+                <p><strong>Email:</strong> {{application.email}}</p>
+                <p><strong>Phone Number:</strong> {{application.phone_number}}</p>
+                <p><strong>Address:</strong> {{application.address}}</p>
+                <p><a target="_blank" href="{{application.cv.url}}">View CV</a></p>
+                <a href="{% url 'applications:process' application.id 'select' %}"><button>Select</button></a>
+            </div>
         </div>
-
     </div>
     {% endfor %}
 </section>
 
-<section class='selected'>
-    {% for application in selected %}
-    <div>
-        <div>
-            <p>Name: {{application.full_name}}</p>
-            <p>Email: {{application.email}}</p>
-            <p>Phone Number: {{application.phone_number}}</p>
-            <p>Address: {{application.address}}</p>
-            <p><a target="_blank" href="{{application.cv.url}}">View CV</a></p>
-            {% if application.employed %}
-            <p> <strong>Employed</strong> </p>{% else %}
-            <a href="{% url 'applications:process' application.id 'unselect' %}"><button>Unselect</button></a>
-            <a href="{% url 'applications:process' application.id 'employed' %}"><button>employed</button></a> {% endif %}
+{% if selected %}
+<div class="tablecontainer">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="7">SELECTED</th>
+            </tr>
+            <tr>
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>CV</th>
+                <th>Unselect</th>
+                <th>Employ</th>
+            </tr>
+        </thead>
+        <tbody>
 
-        </div>
+            {% for application in selected %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td> {{application.full_name}}</td>
+                <td>{{application.email}}</td>
+                <td>{{application.phone_number}}</td>
+                <td><a target="_blank" href="{{application.cv.url}}">View CV</a></td>
+                {% if application.employed %}
+                <td></td>
+                <td> <strong>Employed</strong> </td>
+                {% else %}
+                <td><a href="{% url 'applications:process' application.id 'unselect' %}"><button>Unselect</button></a></td>
+                <td><a href="{% url 'applications:process' application.id 'employed' %}"><button>Employed</button></a></td> {% endif %}
 
-    </div>
-    {% endfor %}
-</section>
+            </tr>
 
-{% endblock main %}
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+{% endif %} {% endblock main %}

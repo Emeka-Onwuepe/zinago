@@ -10,12 +10,15 @@
 {% endblock nav %} {% block main %} {% if messages %} {% for message in messages %}
 <p style="color: green">{{ message }}</p>
 {% endfor %} {% endif %}
-<strong>
-    <p> Welcome {{user.first_name}} {{user.last_name}}.</p>
-</strong>
-<form action="{% url 'publisher:publisherView' user.username sectionId action %}" method="post">
-    {% csrf_token %} {{form}}
-    <button type="submit" class="submit addbutton">
+    <p class="adminuser" style="margin-bottom: 20px;"> Welcome {{user.first_name}} {{user.last_name}}.</p>
+<div class="flexView">
+    <div class="sectionDiv flex_item1">
+        <form action="{% url 'publisher:publisherView' user.username sectionId action %}" method="post">
+
+            <legend>CREATE SECTION</legend>
+            {% csrf_token %} {{form}}
+
+            <button type="submit" class="submit submitButton">
         
         {% if action == "add" %}
             ADD
@@ -24,27 +27,29 @@
         {% endif %}
             
     </button>
-</form>
 
-<section class="list_items">
-    {% for section in sections %}
-    <div class="items">
-        <div class="innerItem">
-            <p style="margin-right:20px;"><a href="{% url 'publisher:controlView' section.id %}">{{section.Name}}</a></p>
-            <a class="delete" href="{% url 'publisher:publisherView' user.username section.id 'delete' %}">
-                <button> Delete</button>
-            </a>
-            <a href="{% url 'publisher:publisherView' user.username section.id 'edit' %}">
-                <button>
+        </form>
+
+        <section class="list_items">
+            {% for section in sections %}
+            <div class="items">
+                <div class="innerItem">
+                    <p><a href="{% url 'publisher:controlView' section.id %}">{{section.Name}}</a></p>
+                    <!-- <a class="delete" href="{% url 'publisher:publisherView' user.username section.id 'delete' %}">
+                        <button> Delete</button>
+                    </a> -->
+                    <a href="{% url 'publisher:publisherView' user.username section.id 'edit' %}">
+                        <button>
                     Edit
                     </button>
-            </a>
-        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
     </div>
-    {% endfor %}
-</section>
-<form action="{% url 'publisher:articleCreateView' user.username %}" method="post">
-    <fieldset style="margin-top: 20px">
+    <form action="{% url 'publisher:articleCreateView' user.username %}" method="post" class="flex_item1">
+
         <legend>CREATE A NEW ARTICLE</legend>
         {% csrf_token %} {% for field in article_form %}
         <div class="formfield">
@@ -54,6 +59,7 @@
         </div>
         {% endfor %}
         <input class="submitButton" type="submit" value="create">
-    </fieldset>
-</form>
+
+    </form>
+</div>
 {% endblock main %}

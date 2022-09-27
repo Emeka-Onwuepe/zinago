@@ -19,9 +19,10 @@ footer {
     display: block;
 }
 
-body {
+
+/* body {
     background-color: #0978c6;
-}
+} */
 
 .Bigwrapper {
     width: 100%;
@@ -643,10 +644,6 @@ footer span {
     h2 {
         font-size: 22px;
     }
-}
-
-label[for=id_job] {
-    display: none;
 }
 
 @media screen and (max-width:317px) {

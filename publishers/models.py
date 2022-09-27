@@ -84,19 +84,20 @@ class Article(models.Model):
     def save(self, skip_md=True, *args, **kwargs):
         if skip_md:
             self.mod_date = datetime.datetime.now()
+            
+   
 
         if self.image:
+            target_height = 333
             im = Image.open(self.image)
-            width, height = im.size
+            width,height=im.size
             output = BytesIO()
-            n = 0.5
-            Width = floor(width * n)
-            Height = floor(height * n)
-            if width > 1000:
-                im = im.resize((Width, Height))
-                im.save(output, format='JPEG', quality=100)
-                output.seek(0)
-                self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split(
+            newHeight= target_height
+            newWidth= int(newHeight/height*width)
+            im = im.resize((newWidth,newHeight))
+            im.save(output, format='JPEG', quality=100)
+            output.seek(0)
+            self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split(
                     '.')[0], 'image/jpeg', sys.getsizeof(output), None)
 
         super().save(*args, **kwargs)  # Call the real save() method

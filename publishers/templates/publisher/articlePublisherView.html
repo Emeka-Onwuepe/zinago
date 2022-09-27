@@ -1,8 +1,4 @@
 {% extends 'publisher/register.html' %} {% block nav %}
-<form action="{% url 'publisher:publisherView' user.username 0 'view' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Welcome Page</button>
-</form>
 
 <form action="{% url 'publisher:editView' user.username article.id %}" method="post">
     {% csrf_token %}
@@ -43,22 +39,22 @@
     <p class="pub_date">Date of Publication: {{article.mod_date}}</p>
 
     <a target="blank" href="{% url 'frontview:articleView' article.id article.title_slug %}">VIEW IN MAIN SITE</a>
-</article>
-{% if article.publish %}
-<form action="{% url 'publisher:articleWithdrawView' article.id %}" method="post">
-    {% csrf_token %}
-    <button class="submitButton publishButton" type="submit" onclick="return
-        confirm('Are you sure you want to withdraw this article ?')">Withdraw</button>
-</form>
-
-{% else %} {% if form %} 
-<div class="publishbox">
-    <form action="{% url 'publisher:publishView' article.id article.title_slug %}" method="post">
-        {% csrf_token %} {{form}}
-        <button class="submitButton publishButton" type="submit">Publish</button>
+    {% if article.publish %}
+    <form action="{% url 'publisher:articleWithdrawView' article.id %}" method="post">
+        {% csrf_token %}
+        <button class="submitButton publishButton" type="submit" onclick="return
+            confirm('Are you sure you want to withdraw this article ?')">Withdraw</button>
     </form>
-</div>
-{% endif %} {% endif %}
+    
+    {% else %} {% if form %} 
+    <div class="publishbox">
+        <form action="{% url 'publisher:publishView' article.id article.title_slug %}" method="post">
+            {% csrf_token %} {{form}}
+            <button class="submitButton publishButton" type="submit">Publish</button>
+        </form>
+    </div>
+    {% endif %} {% endif %}
+</article>
 <script>
     hidePublishButton()
 

@@ -7,10 +7,6 @@
     {% csrf_token %}
     <button type="submit">View</button>
 </form>
-<form action="{% url 'publisher:publisherView' user.username 0 'view'  %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Welcome Page</button>
-</form>
 {% endblock nav %} {% block main %}
 <div id="buttonDiv">
     <button type="button" data-command="bold" class="tool-btn"><img class="intLink" title="Bold"
@@ -54,7 +50,7 @@
         <option value="h6">H6</option>
     </select>
 </div>
-<form action="{% url 'publisher:editpro' user.username article.id %}" enctype="multipart/form-data" method="post">
+<form style='margin-top:170px' action="{% url 'publisher:editpro' user.username article.id %}" enctype="multipart/form-data" method="post">
     <fieldset>
         <legend>UPDATE ARTICLE</legend>
         {% csrf_token %} {% for field in form %}
@@ -89,7 +85,6 @@
 <form action="javascript:void(0)" method="">
     {% csrf_token %}
     <button id='addSection' type="submit">Add Sub Section</button>
-    <button id='addReference' type="submit"> Edit </button>
     <P style="display: none;" id='compare'>{{article.section}}</P>
 </form>
 {% endblock main %}

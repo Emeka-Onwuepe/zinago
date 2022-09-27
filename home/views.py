@@ -13,6 +13,9 @@ def hrView(request):
 def legalView(request):
     return render(request,'home/legal.html')
 
+def aboutView(request):
+    return render(request,'home/about.html')
+
 def articleView(request, article_id, article_slug):
     article = None
     try:

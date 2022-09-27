@@ -8,8 +8,8 @@
 <meta property="og:title" content="{{article.title}}" />
 <meta property="og:description" content="{{article.description}}" /> {% endblock meta_tags %} {% block sideNav %} {% if articles %}
 <h3 id=""><a href="{% url 'frontview:sectionView' section %}">
-    {{section}} JOB POSTS</a></h3>
-<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search topics" id="myInput">
+    {{section}} Job Posts</a></h3>
+<input type="text" id="SearchInput" onkeyup="SearchFunction()" placeholder="Search posts" id="myInput">
 <ul id="sideNavUL">
     {% for article in articles %}
     <li><a class="a" href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></li>
@@ -20,113 +20,126 @@
 <p>No vacancies at the moment</p>
 {% endif %} {% endblock sideNav %} {% block mainHeading %}
 <div id="mainhead" class="mainhead">
-    <h1 id="mainHeading">{{article.title}}</h1>
+    <h2 id="mainHeading">{{article.title}}</h2>
 </div>
 {% endblock mainHeading %} {% block main %}
-<div id="fb-root"></div>
-<!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script> -->
-<script>
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<script>
-    window.twttr = (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0],
-            t = window.twttr || {};
-        if (d.getElementById(id)) return t;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-
-        t._e = [];
-        t.ready = function(f) {
-            t._e.push(f);
-        };
-
-        return t;
-    }(document, "script", "twitter-wjs"));
-</script>
-<article class="article">
-    {% if article.image %}
-    <figure class="">
-        <img src="{{article.image.url}}" alt="{{article.image_description}}">
-        <figcaption><em>Image Source: {{article.image_source}}</em></figcaption>
-    </figure>
-    {% endif %}
-    <div class="share">
-        <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
-        </div>
-        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{article.description}}" data-size="">
-            Tweet
-        </a>
-        <a href="whatsapp://send?text={{request.build_absolute_uri}}"> <img id="whatsappicon" src="{% static 'CSS/whatsapp.png' %}" alt=""></a>
-    </div>
-    <!-- <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> -->
-    <section>
-        {% if article.sub_heading %}
-        <h2 class="">{{article.sub_heading}}</h2>
-        {% endif %} {{article.body_text|safe}}
-    </section>
-    {% for section in sections %}
-    <section>
-        <h3>{{section.sub_heading}}</h3>
-        {% if section.Sub_section_image %}
-        <figure style="margin-bottom: 10px;" class="">
-            <img src="{{section.Sub_section_image.url}}" alt="{{section.image_description}}">
-            <figcaption><em>Image Source: {{section.image_source}}</em></figcaption>
-        </figure>{% endif %} {{section.body_text|safe}}
-    </section>
-    {% endfor %}
-
-    <p class="pub_date">Date of Publication: {{article.mod_date}}</p>
-
-    <div class="share">
-        <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
-        </div> <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{article.description}}" data-size="">
-            Tweet</a>
-        <a href="whatsapp://send?text={{request.build_absolute_uri}}"> <img id="whatsappicon" src="{% static 'CSS/whatsapp.png' %}" alt=""></a>
-    </div>
-    <!-- <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div> -->
+<section class="articleBox">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
     <script>
-        alert({
-            message
-        })
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
+    <script>
+        window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+    <article class="article">
+        {% if article.image %}
+        <div class="imgcontainer">
+            <figure class="">
+                <img src="{{article.image.url}}" alt="{{article.image_description}}">
+                <figcaption><em>Image Source: {{article.image_source}}</em></figcaption>
+            </figure>
+        </div>
+        <div class="share">
+            <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
+            </div>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{article.description}}" data-size="">
+                <img id="twitter icon" src="{% static 'css/social/twitter.png' %}" alt="">
+            </a>
+            <a href="whatsapp://send?text={{request.build_absolute_uri}}"> <img id="whatsappicon" src="{% static 'css/social/whatsapp.png' %}" alt=""></a>
+            <div style="display:inline ;" class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img id="facebook icon" src="{% static 'css/social/facebook.png' %}" alt=""></a>
+            </div>
+        </div>
+        {% endif %}
 
 
-    {% if article.still_open %}
-    <form id="apply" action="{% url 'frontview:articleView' article.id article.title_slug %}" enctype="multipart/form-data" method="post">
-        {% csrf_token %}
-        <legend>Apply</legend>
+        <section>
+            {% if article.sub_heading %}
+            <h3 class="">{{article.sub_heading}}</h3>
+            {% endif %} {{article.body_text|safe}}
+        </section>
+        {% for section in sections %}
+        <section>
+            <h3>{{section.sub_heading}}</h3>
+            {% if section.Sub_section_image %}
+            <figure style="margin-bottom: 10px;" class="">
+                <img src="{{section.Sub_section_image.url}}" alt="{{section.image_description}}">
+                <figcaption><em>Image Source: {{section.image_source}}</em></figcaption>
+            </figure>{% endif %} {{section.body_text|safe}}
+        </section>
+        {% endfor %}
+
+        <p class="pub_date">{{article.mod_date}}</p>
+
+        <div class="share">
+            <div class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
+            </div>
+            <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{article.description}}" data-size="">
+                <img id="twitter icon" src="{% static 'css/social/twitter.png' %}" alt=""></a>
+            <a href="whatsapp://send?text={{request.build_absolute_uri}}"> <img id="whatsappicon" src="{% static 'css/social/whatsapp.png' %}" alt=""></a>
+            <div style="display:inline ;" class="fb-share-button" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-size="small">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img id="facebook icon" src="{% static 'css/social/facebook.png' %}" alt=""></a>
+            </div>
+        </div>
+
+</section>
+{% if article.still_open %}
+<form id="apply" action="{% url 'frontview:articleView' article.id article.title_slug %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <legend>Application Form</legend>
+    <div class="form_body">
         {{registrationForm}}
-        <button type="submit">Apply</button>
-    </form>
-    {% else %}
-    <p>Application Closed</p>
-    {% endif %}
+    </div>
+
+    <button type="submit" class="submitButton">Apply</button>
+</form>
+{% else %}
+<p>Application Closed</p>
+{% endif %}
 
 
 </article>
 
 
 {% endblock main %} {% block ads %} {% endblock ads %} {% block mostviewed %} {% if mostviewed %}
-<div id="" class="articleInnerBox" style="clear:both;background-color:#056fb6">
-    <h2 style="text-align:center;color:#f9f9f9;text-shadow: 2px 1px black;">Most Viewed Job Posts</h2>
+<h2>Most Viewed Job Posts</h2>
+<div id="" class="articleInnerBox">
+
     {% for article in mostviewed %}
     <section class="articleDisplayBox">
         <h3><a href="{% url 'frontview:articleView' article.id article.title_slug %}">{{article}}</a></h3>
-        {% if article.image %}
-        <img class="" src="{{article.image.url}}" alt="{{article.image_description}}">{% endif %}
+        <!-- {% if article.image %}
+        <img class="" src="{{article.image.url}}" alt="{{article.image_description}}">{% endif %} -->
         <p>{{article.bodySnippet|safe}}</p>
         <p class="pub_date"> {{article.mod_date}}</p>
     </section>
     {% endfor %}
 </div>
+{% endif %} {% if message %}
+<script>
+    alert("{{message}}")
+</script>
 {% endif %} {% endblock mostviewed %} {% block news %} {% endblock news %}

@@ -12,7 +12,30 @@
             var mainHeadingMatch = mainHeadingmatch.innerHTML;
 
             if (mainHeadingText === mainHeadingMatch) {
-                li[i].style.backgroundColor = "#1496f4";
+                li[i].style.backgroundColor = "#0FA6A6";
+                mainHeadingmatch.style.color = "white";
+            } else {
+                li[i].style.backgroundColor = "";
+            }
+
+        }
+    }
+
+    Pagination2();
+
+    function Pagination2() {
+        var mainHeading = document.getElementById("mainHeading");
+        var mainHeadingText = mainHeading.innerHTML;
+
+        var sideNavUL = document.getElementById("sideNavUL2");
+        var li = sideNavUL.getElementsByTagName("li");
+
+        for (i = 0; i < li.length; i++) {
+            var mainHeadingmatch = li[i].getElementsByClassName("a")[0];
+            var mainHeadingMatch = mainHeadingmatch.innerHTML;
+
+            if (mainHeadingText === mainHeadingMatch) {
+                li[i].style.backgroundColor = "#0FA6A6";
                 mainHeadingmatch.style.color = "white";
             } else {
                 li[i].style.backgroundColor = "";
@@ -38,19 +61,19 @@
     checkSideNav();
 
     function checkSideNav() {
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         var closeButton = document.getElementById("close");
         var toggle = document.getElementById("toggle")
         var x_axis = window.innerWidth;
 
-        if (x_axis <= 999) {
+        if (x_axis <= 899) {
             sideNav.style.display = "none";
             closeButton.style.display = "block";
             toggle.style.display = "block"
         } else {
-            if (x_axis >= 999) {
+            if (x_axis >= 899) {
                 closeButton.style.display = "none"
-                sideNav.style.display = "block";
+                sideNav.style.display = "none";
                 toggle.style.display = "none"
             }
         }
@@ -73,8 +96,25 @@
         }
     }
 
+    function SearchFunction2() {
+        var input, filter, sideNavUL, li, contents, i;
+        input = document.getElementById("SearchInput2");
+        filter = input.value.toUpperCase();
+        sideNavUL = document.getElementById("sideNavUL2");
+        li = sideNavUL.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            contents = li[i].getElementsByTagName("a")[0];
+            if (contents.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "block";
+            } else {
+                li[i].style.display = "none";
+
+            }
+        }
+    }
+
     function show() {
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         if (sideNav.style.display === "none") {
             sideNav.style.display = "block";
             var closeButton = document.getElementById("close");
@@ -86,7 +126,7 @@
     };
 
     function showNot() {
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         sideNav.style.display = "none";
         var closeButton = document.getElementById("close");
         closeButton.style.display = "none";
@@ -99,50 +139,26 @@
 
     function myResize() {
         var closeButton = document.getElementById("close");
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         var x_axis = window.innerWidth;
-        var fixing = document.getElementById("fixing");
-        var fixing2 = document.querySelector(".fixing")
-        if (x_axis >= 999) {
+        if (x_axis >= 899) {
             sideNav.removeAttribute("style");
             closeButton.style.display = "none";
-            stickSideBar();
+            checkSideNav();
         }
-        if (x_axis <= 999 && document.activeElement.id !== "SearchInput") {
-            fixing.removeAttribute("style");
-            fixing2.removeAttribute("style")
+        if (x_axis <= 899 && document.activeElement.id !== "SearchInput") {
             sideNav.removeAttribute("style");
-        } else {
-            displayHead();
-        }
-        if (document.activeElement.id !== "SearchInput") {
-            checkSideNav()
-        }
+            if (document.activeElement.id !== "SearchInput") {
+                checkSideNav()
+            }
 
+        }
     }
 
     document.getElementsByTagName("BODY")[0].onscroll = function() {
-        displayHead(), backToTop(), stickSideBar()
+        backToTop()
     };
 
-    function displayHead() {
-        var bannerParagraph = document.getElementById("bannerParagraph");
-        var bannerParagraphOffSet = bannerParagraph.offsetTop;
-        var fixing = document.getElementById("fixing");
-        var fixing2 = document.querySelector(".fixing")
-        var desktopView = 1000;
-        var x_axis = window.innerWidth;
-        var y_axis = window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop;
-        if (x_axis >= desktopView && y_axis >= bannerParagraphOffSet) {
-            fixing.style.display = "block"
-            fixing2.style.display = "none"
-        } else if (x_axis >= desktopView && y_axis <= bannerParagraphOffSet) {
-            fixing.style.display = "none"
-            fixing2.style.display = "block"
-        }
-    }
 
     function backToTop() {
         var y_axis_offset = window.pageYOffset ||
@@ -157,33 +173,9 @@
         }
     }
 
-    function stickSideBar() {
-        var x_axis = window.innerWidth;
-        var y_axis = window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop;
-        var desktopView = 1000
-        var sideNav = document.getElementById("sideNav");
-        var main = document.getElementById("main");
-
-        if (x_axis >= desktopView && y_axis >= 340) {
-            sideNav.style.position = "fixed";
-            sideNav.style.height = "85%";
-            sideNav.style.top = "98px"
-            main.style.left = "25%"
-        } else if (x_axis >= desktopView && y_axis <= 390) {
-            sideNav.style.position = "relative"
-            sideNav.style.height = "750px";
-            sideNav.style.top = "0px"
-            main.style.left = "0%"
-        }
-        if (x_axis <= 999) {
-            sideNav.style.top = "100px";
-        }
-    }
     //for Safari and his brothers
     window.addEventListener('scroll', function() {
-        displayHeadSafari(), backToTop(), stickSideBarSafari()
+        backToTop()
     });
     window.addEventListener('resize', function() {
         myResizeSafari()
@@ -193,17 +185,17 @@
     checkSideNavSafari();
 
     function checkSideNavSafari() {
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         var x_axis = document.documentElement.clientWidth ||
             document.body.clientWidth;
         var closeButton = document.getElementById("close");
         var toggle = document.getElementById("toggle")
-        if (x_axis <= 999 && SafariDetector) {
+        if (x_axis <= 899 && SafariDetector) {
             sideNav.style.display = "none";
             closeButton.style.display = "block";
             toggle.style.display = "block"
         } else {
-            if (x_axis >= 999 && SafariDetector) {
+            if (x_axis >= 899 && SafariDetector) {
                 closeButton.style.display = "none"
                 sideNav.style.display = "block";
                 toggle.style.display = "none"
@@ -214,77 +206,49 @@
 
     function myResizeSafari() {
         var closeButton = document.getElementById("close");
-        var sideNav = document.getElementById("sideNav");
+        var sideNav = document.getElementById("dropdown");
         var x_axis = document.documentElement.clientWidth ||
             document.body.clientWidth;
-        var desktopView = 999
-        var fixing = document.getElementById("fixing");
-        var fixing2 = document.querySelector(".fixing")
+        var desktopView = 899
         if (x_axis >= desktopView && SafariDetector) {
             sideNav.removeAttribute("style");
             closeButton.style.display = "none";
-            stickSideBarSafari();
-            sideNav.style.display = "block";
-            sideNav.style.position = "relative";
+            sideNav.style.display = "none";
+
         }
         if (x_axis <= desktopView && SafariDetector) {
-            fixing.removeAttribute("style");
-            fixing2.removeAttribute("style")
             sideNav.removeAttribute("style");
             sideNav.style.position = "fixed";
-        } else {
-            displayHead();
         }
         checkSideNavSafari()
     }
 
-    function displayHeadSafari() {
-        var bannerParagraph = document.getElementById("bannerParagraph");
-        var bannerParagraphOffSet = bannerParagraph.offsetTop;
-        var desktopView = 1000
-        var fixing = document.getElementById("fixing");
-        var fixing2 = document.querySelector(".fixing")
-        var x_axis = document.documentElement.clientWidth ||
-            document.body.clientWidth;
-        var y_axis_offset = window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop;
-        if (x_axis >= desktopView && y_axis_offset >= bannerParagraphOffSet && SafariDetector) {
-            fixing.style.display = "block"
-            fixing2.style.display = "none"
-        } else if (x_axis >= desktopView && y_axis_offset <= bannerParagraphOffSet && SafariDetector) {
-            fixing.style.display = "none"
-            fixing2.style.display = "block"
-        }
-    }
+    // const dropDownBtn = document.querySelector(".drop")
+    // const dropDown = document.querySelector(".dropdown")
 
-    function stickSideBarSafari() {
-        var x_axis = document.documentElement.clientWidth ||
-            document.body.clientWidth;
-        var y_axis_offset = window.pageYOffset ||
-            document.documentElement.scrollTop ||
-            document.body.scrollTop;
-        var desktopView = 1000
-        var sideNav = document.getElementById("sideNav");
-        var main = document.getElementById("main");
-        if (x_axis >= desktopView && y_axis_offset >= 340 && SafariDetector) {
-            sideNav.style.position = "fixed";
-            sideNav.style.height = "85%";
-            sideNav.style.top = "98px"
-            main.style.left = "25%"
-        } else {
-            if (x_axis >= desktopView && y_axis_offset <= 390 && SafariDetector) {
-                sideNav.style.position = "relative"
-                sideNav.style.height = "750px";
-                sideNav.style.top = "0px"
-                main.style.left = "0%"
-            }
-        }
-        if (x_axis <= 999 && SafariDetector) {
-            sideNav.style.top = "100px";
-        }
-    }
+    // dropDownBtn.addEventListener('mouseover', () => dropDown.style.display = "block")
+    // dropDownBtn.addEventListener('mouseout', () => dropDown.style.display = "none")
 
+
+    const dropDownBtn2 = document.querySelector(".drop2")
+    const dropDown2 = document.querySelector(".dropdown2")
+
+    dropDownBtn2.addEventListener('mouseover', () => dropDown2.style.display = "block")
+    dropDownBtn2.addEventListener('mouseout', () => dropDown2.style.display = "none")
+
+    const dropDownBtns = document.querySelectorAll(".drops")
+
+    for (const btn of dropDownBtns) {
+        const id = `.dropdown_${btn.id.split('_')[0]}`
+        const dropdown = document.querySelector(id)
+        btn.addEventListener('mouseover', () => {
+            dropdown.style.display = "block"
+            btn.style.backgroundColor = "white"
+            dropdown.style.backgroundColor = "#f5f5f5"
+        })
+        btn.addEventListener('mouseout', () => { dropdown.style.display = "none" })
+
+    }
 
     try {
         let input = document.querySelector("#id_cv")
@@ -298,104 +262,4 @@
             // }
     } catch (error) {
         console.log(error)
-    }
-
-    // var contactInputs = document.querySelectorAll(".contactInput")
-    // let errorMessages = {
-    //     "full_name": "Only alphabets are allowed",
-    //     "email": "Invalid email",
-    //     "message": "Character not allowed",
-    //     "subject": "Character not allowed",
-    //     "phone_number": "Invalid phone number"
-    // }
-
-    // let errorTest = {
-    //     "full_name": /[^a-z\s]/i,
-    //     "email": /^[a-z]+\d*[a-z]*@[a-z]+\.\w+\s*$/gi,
-    //     "message": /[^a-z\s.,;':)(0-9"#_-]/i,
-    //     "subject": /[^a-z\s.,;':)(0-9"#_-]/i,
-    //     "phone_number": /[^0-9+\s]/i
-    // }
-
-    // for (const contactInput of contactInputs) {
-    //     contactInput.addEventListener("keyup", function() {
-    //         let fieldName = contactInput.name;
-    //         let fieldValue = contactInput.value;
-    //         let fieldLength = fieldValue.length
-    //         let selector = `${fieldName}er`;
-    //         let errP = document.querySelector(`#${selector}`);
-    //         if (errorTest[fieldName].test(fieldValue)) {
-    //             errP.innerHTML = errorMessages[fieldName];
-    //             contactInput.style.marginBottom = "0px";
-    //         } else if (fieldName == "phone_number" && fieldLength < 11) {
-    //             errP.innerHTML = errorMessages[fieldName];
-    //             contactInput.style.marginBottom = "0px";
-
-    //         } else if (fieldName == "email" && !errorTest[fieldName].test(fieldValue)) {
-    //             errP.innerHTML = errorMessages[fieldName];
-    //             contactInput.style.marginBottom = "0px";
-
-    //         } else {
-    //             errP.innerHTML = "";
-    //             contactInput.style.marginBottom = "15px";
-    //         }
-
-    //         if (fieldValue.length == 0) {
-    //             errP.innerHTML = "";
-    //             contactInput.style.marginBottom = "15px";
-    //         }
-
-    //         enableSubmitButton();
-
-    //     })
-
-    // }
-
-    // function enableSubmitButton() {
-    //     let submitbtn = document.getElementById("submit");
-    //     for (const contactInput of contactInputs) {
-    //         let fieldName = contactInput.name;
-    //         let fieldLength = contactInput.value.length
-    //         let selector = `${fieldName}er`;
-    //         let errP = document.querySelector(`#${selector}`);
-    //         if (fieldLength <= 0) {
-    //             console.log("no")
-    //             submitbtn.disabled = true
-    //             submitbtn.style.backgroundColor = "gray";
-    //             break;
-    //         } else if (errP.innerHTML.length > 0) {
-    //             console.log("no")
-    //             submitbtn.disabled = true
-    //             submitbtn.style.backgroundColor = "gray";
-    //             break;
-    //         } else {
-    //             console.log("hello")
-    //             submitbtn.disabled = false;
-    //             submitbtn.style.backgroundColor = "#09794a";
-    //         }
-
-    //     }
-
-    // }
-
-    // setEndnotes()
-
-    // function setEndnotes() {
-    //     let compare = document.querySelector("#compare").innerHTML.toLowerCase()
-    //     let refs = document.querySelector("#refs")
-    //     let compareWith = "history"
-    //     if (compare == compareWith) {
-    //         refs.innerHTML = "End Notes"
-    //     } else {
-    //         refs.innerHTML = "References"
-    //     }
-    // }
-
-    offsetTop()
-
-    function offsetTop() {
-        window.addEventListener("hashchange", function(e) {
-            window.scrollTo(window.scrollX, window.scrollY - 103);
-            history.replaceState(null, null, " ")
-        });
     }

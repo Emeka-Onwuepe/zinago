@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/slide_category.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/pages.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/dropdown.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,7 +17,7 @@
     <link rel="shortcut icon" href="{% static 'css/img/logo.png' %}" type="image/png">
     <link rel="apple-touch-icon" href="{% static 'css/img/logo.png' %}">
     <link rel="icon" href="{% static 'css/img/logo.png' %}" type="image/png"> {% block title %}
-    <title>Home | Zinago </title>
+    <title>About Us | Zinago </title>
     {% endblock title %}
     <meta name="author" content="Emeka Casper Onwuepe " />
     <meta name="description" content="A Human Resource and legal firm dedicated to providing professional legal and HR Consulting Services and evolving Recruitment Solutions that help our customers become more productive and profitable." /> {% block keywords %}
@@ -41,17 +42,47 @@
         </header>
         <div class="sperator"></div>
         <main>
-            <section class="slide_category">
-                {% include "home/slide_category.html" %}
-            </section>
-            <div class="svg_div">
-
-                <svg width="100%" stroke="" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M 0 14 Q 30 34, 60 14 T 100 4 L100 40 100 100 0 100 0 50" fill="#0FA6A6"></path></svg>
-                <p id="slidetext"></p>
+            <h1>ABOUT US</h1>
+            <div class="growth_img_div">
+                <img class="growth_img" src="{% static 'css/img/legal.jpeg' %}" alt="legal">
             </div>
+            <div class="abouttext">
+                <p>Zinago is a law and human resources firm that provides unmatched professional services to establishments, employers, and employees. We lessen the burden on the employer by helping them maximize the efficiency of employees leading to higher
+                    productivity levels. We are a professional, enthusiastic and innovative team, dedicated to providing professional HR Consulting Services and evolving recruitment, training, and employee management solutions that help our customers
+                    become more profitable. Your most valuable resources are your employees.</p>
+                <p>Our legal services include:</p>
+                <ul>
+                    <li>Business Affair</li>
+                    <li>Debt and Asset Recovery</li>
+                    <li>Pensions, Employment and Labour Laws</li>
+                    <li>Family and Matrimonial Law</li>
+                    <li>Intellectual Property - Patents, Copyrights and Trademark Registration</li>
+                    <li>Company Commercial - Formations, Regulatory and Corporate Governance including Company Secretarial Services</li>
+                    <li>Real Estate - Purchase, Leasing and Management of Properties</li>
+                </ul>
+                <p>Our HR objective is to add value to the organizations we operate, as we capture every aspect and specialism of the profession and look at the underpinning skills, behavior, and knowledge that are needed to be successful. Our HR Profession
+                    Map focuses on levels of competence. We try not to constrain the development of an HR professional by the job level at which they are operating.</p>
 
-            <section id="services" class="services">
-                <h2>OUR HUMAN RESOURCE SERVICES</h2>
+                <section class="legal">
+                    <h3>Our Functionality to Organizations</h3>
+
+                    <div class="flex-container legal">
+                        <div class="flex_item">The structure, constitution and powers of the organization.</div>
+                        <div class="flex_item">Supporting The Delivery of Organization Objectives.</div>
+                        <div class="flex_item">Induction and evaluation of training for board and committee members.</div>
+                        <div class="flex_item">Compliance with regulatory requirements for reporting and audits.</div>
+                        <div class="flex_item">Building organization capability.</div>
+                        <div class="flex_item">Performance Management.</div>
+                        <div class="flex_item">Contribution to change.</div>
+                        <div class="flex_item">Developing careers and skills.</div>
+                        <div class="flex_item">Effective HR administration.</div>
+                    </div>
+                </section>
+
+
+            </div>
+            <section style="margin-top: 0px;" id="services" class="services">
+                <h2>Our Human Resource Services</h2>
                 <div class="flex-container">
                     <div class="service">
                         <h3>Recruitment</h3>
@@ -96,29 +127,14 @@
                     </div>
                     <div class="service">
                         <h3>Compensation Management</h3>
-                        <p>We would help in managing, analyzing, and determining the salary, incentives & benefits for each of your employee. Our aim is to attract, retain and engage employees by offering broad and competitive compensation plans within the company budget</p>
+                        <p>We would help in managing, analyzing, and determining the salary, incentives & benefits for each of your employee. Our aim is to attract, retain and engage employees by offering broad and competitive compensation plans within the
+                            company budget
+                        </p>
                     </div>
                 </div>
             </section>
-
-            <!-- <div class="growth_img_div">
-                <img class="growth_img" src="{% static 'css/img/growth.jpg' %}" alt="growth">
-            </div> -->
-
-            <section class="legal">
-                <h3>Our Legal Services</h3>
-
-                <div class="flex-container legal">
-                    <div class="flex_item">Business Affairs</div>
-                    <div class="flex_item">Debt and Asset Recovery</div>
-                    <div class="flex_item">Pensions, Employment and Labour Laws</div>
-                    <div class="flex_item">Family and Matrimonial Law</div>
-                    <div class="flex_item">Intellectual Property - Patents, Copyrights and Trademark Registration</div>
-                    <div class="flex_item">Company Commercial - Formations, Regulatory and Corporate Governance including Company Secretarial Services </div>
-                    <div class="flex_item">Real Estate - Purchase, Leasing and Management of Properties</div>
-                </div>
-            </section>
-            {% include './contactus.html' %}
+{% include './contactus.html' %}
+            
         </main>
         <div onclick="window.scrollTo({top: 0, behavior:'smooth'})" id="backToTop" class="backToTop">
             <a onclick="window.scrollTo({top: 0, behavior:'smooth'})">&#10094;</a>
@@ -127,7 +143,7 @@
             {% block footer %}
             <footer>
                 <p id="footer"> Copyright &copy;
-                    <span id="footerdate" style="padding: 0%"></span>. All rights reserved. www.zinago.ng
+                    <span id="footerdate" style="padding: 0%"></span>. All rights reserved. www.zinagohrsolutions.ng
                 </p>
             </footer>
             {% endblock footer %}
