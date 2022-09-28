@@ -195,6 +195,9 @@
         width: 94.5%;
         height: 40%;
     }
+    .catlink2 {
+        font-size: 21px;
+    }
 }
 
 @media screen and (min-width:363px) {

@@ -1,13 +1,12 @@
 <section id="dropdown">
-    <a href="javascript:void(0)" onclick="showNot()" id="close" class="close">&times;</a>
-    {% comment %} <div id="1_" class="drops navdiv">
+    <a href="javascript:void(0)" onclick="showNot()" id="close" class="close">&times;</a> {% comment %}
+    <div id="1_" class="drops navdiv">
         <a class="link" href="#">Services</a>
         <div class="dropdown_1">
             <a class="link" href="{% url 'frontview:legalView' %}">Legal</a>
             <a class="link" href="{% url 'frontview:hrView' %}">Human Resource</a>
         </div>
-    </div> {% endcomment %}
-    {% if sorted_sections %}
+    </div> {% endcomment %} {% if sorted_sections %}
     <div id="2_" class="drops navdiv">
         <a class="link" href="#">Jobs</a>
         <div class="dropdown_2">
@@ -17,7 +16,7 @@
     </div>
     {% endif %}
     <div class="navdiv">
-        <a class="link" href="#contact">Contact</a>
+        <a class="link" onclick="showNot()" href="#contact">Contact</a>
     </div>
     <div class="navdiv">
         <a class="link" href="{% url 'frontview:aboutView' %}">About</a>
@@ -25,7 +24,7 @@
     {% if articles %}
     <div class="dropdown_nav">
         <h3 id="">
-        {{section}} Job Posts</h3>
+            {{section}} Job Posts</h3>
         <input type="text" id="SearchInput2" onkeyup="SearchFunction2()" placeholder="Search posts" id="myInput2">
         <ul id="sideNavUL2">
             {% for article in articles %}
