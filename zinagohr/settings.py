@@ -86,27 +86,27 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'zinago',
-#         'USER': 'root',
-#         'HOST': 'localhost',
-#         'PASSWORD': '',
-#         'PORT': ''
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("db_name"),
-        'USER':  os.environ.get("db_user"),
+        'NAME': 'zinago',
+        'USER': 'root',
         'HOST': 'localhost',
-        'PASSWORD':  os.environ.get("db_password"),
+        'PASSWORD': '',
         'PORT': ''
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get("db_name"),
+#         'USER':  os.environ.get("db_user"),
+#         'HOST': 'localhost',
+#         'PASSWORD':  os.environ.get("db_password"),
+#         'PORT': ''
+#     }
+# }
 
 
 # Password validation

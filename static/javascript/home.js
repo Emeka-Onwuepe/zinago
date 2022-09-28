@@ -59,11 +59,17 @@ function showNot() {
 // dropDownBtn.addEventListener('mouseover', () => dropDown.style.display = "block")
 // dropDownBtn.addEventListener('mouseout', () => dropDown.style.display = "none")
 
-const dropDownBtn2 = document.querySelector(".drop2")
-const dropDown2 = document.querySelector(".dropdown2")
+try {
 
-dropDownBtn2.addEventListener('mouseover', () => dropDown2.style.display = "block")
-dropDownBtn2.addEventListener('mouseout', () => dropDown2.style.display = "none")
+    const dropDownBtn2 = document.querySelector(".drop2")
+    const dropDown2 = document.querySelector(".dropdown2")
+
+    dropDownBtn2.addEventListener('mouseover', () => dropDown2.style.display = "block")
+    dropDownBtn2.addEventListener('mouseout', () => dropDown2.style.display = "none")
+
+} catch (error) {
+    console.log(error)
+}
 
 const dropDownBtns = document.querySelectorAll(".drops")
 
