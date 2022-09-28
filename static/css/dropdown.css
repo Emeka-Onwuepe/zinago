@@ -12,7 +12,7 @@
 
 .close {
     position: fixed;
-    left: 260px;
+    left: 280px;
     font-size: 36px;
     display: none;
 }
@@ -24,6 +24,7 @@
 
 .navdiv {
     border-bottom: 1px dotted black;
+    width: 260px;
 }
 
 .gnav {
