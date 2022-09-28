@@ -24,11 +24,6 @@ a {
     display: inline-block;
 }
 
-li {
-    text-decoration: none;
-    list-style: none;
-}
-
 .bigwrapper {
     display: flex;
     flex-direction: column;
@@ -78,24 +73,22 @@ nav a {
     text-align: center;
 }
 
-.link:last-child {
-    margin-right: 0px;
-}
-
 nav a:hover {
     background-color: #053A3B;
     transition: 0.5s;
 }
 
-.dropdown {
+.dropdown,
+.dropdown2 {
     position: absolute;
     display: none;
 }
 
-.dropdown a {
+.dropdown a,
+.dropdown2 a {
     display: block;
     border-top: 2px solid #053A3B;
-    width: 150px;
+    width: 180px;
 }
 
 .svg_div {
@@ -223,6 +216,24 @@ nav a:hover {
     text-align: center;
 }
 
+.abouttext {
+    padding: 10px;
+    text-align: justify;
+}
+
+.abouttext ul {
+    padding: 0px 0px 10px 30px;
+    margin-top: -10px;
+}
+
+.abouttext p {
+    padding-bottom: 10px;
+}
+
+.abouttext li {
+    margin-bottom: 6px;
+}
+
 footer {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.9);
@@ -308,18 +319,18 @@ footer span {
 }
 
 @media screen and (min-width:1000px) {
-    * {
+    /* * {
         font-size: 20px;
-    }
+    } */
     .logo {
         width: 150px;
     }
     .sperator {
         margin-top: 100px;
     }
-    nav a {
+    /* nav a {
         font-size: 20px;
-    }
+    } */
     nav a {
         margin-right: 20px;
     }

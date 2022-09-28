@@ -1,0 +1,498 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: black;
+    font-family: "sans-serif", "Times New Roman";
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+main,
+header,
+section,
+aside,
+article,
+nav,
+footer {
+    display: block;
+}
+
+body {
+    background-color: #f5f5f5
+}
+
+.Bigwrapper {
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.6;
+    margin: 0px auto;
+    text-align: justify;
+}
+
+.logo {
+    width: 100px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    margin-top: 5px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav form button {
+    background-color: #0FA6A6;
+    color: white;
+    cursor: pointer;
+    transition: background-color .3s;
+    -webkit-transition: background-color .3s;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.nav a:hover {
+    background-color: #056fb6;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+    border-bottom: 2px solid #1496cf;
+    top: 0px
+}
+
+#buttonDiv {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 128px;
+    background-color: #f5f5f5;
+    text-align: center;
+    border-top: 5px solid #f5f5f5;
+}
+
+#buttonDiv button,
+#buttonDiv select,
+select option {
+    display: inline-block;
+    font-size: 10px;
+    padding: 1px;
+}
+
+main {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 100px;
+    min-height: 623px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.list_items,
+.applications {
+    display: flex;
+    flex-wrap: wrap;
+    /* border: 2px solid yellow; */
+    margin: 30px 0px;
+}
+
+#list_items {
+    margin: 0px;
+}
+
+.items {
+    padding: 5px;
+    flex-grow: 1;
+    /* background-color: #734217; */
+    border: 2px solid #f5f5f5;
+    /* background-color: #734217; */
+    background-color: white;
+    color: black;
+    /* border: 2px solid green; */
+}
+
+.innerItem {
+    flex-grow: 1;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+}
+
+.innerItem p {
+    text-indent: 0px;
+}
+
+.details {
+    border-left: 2px solid black;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.innerItem button {
+    margin: 0px 10px;
+    padding: 4px;
+    background-color: #0FA6A6;
+    color: white;
+}
+
+table button {
+    padding: 4px;
+    background-color: #0FA6A6;
+    color: white;
+}
+
+legend {
+    text-align: center;
+    margin: 0px auto;
+}
+
+.help {
+    text-indent: 0px;
+    font-size: 14px;
+    padding-right: 10px;
+    color: green;
+}
+
+.formfield .eerrorlist,
+.formfield .errorlist li {
+    color: red;
+}
+
+.formfield li,
+#extradata li {
+    text-indent: 0px;
+    font-size: 14px;
+    margin-left: 9px;
+    padding-right: 10px;
+    color: green;
+}
+
+fieldset {
+    margin-top: 20px;
+    width: 60%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.article {
+    width: 100%;
+    background-color: white;
+    padding: 1% 3% 3% 3%;
+}
+
+.article section {
+    margin-top: 1.3%;
+}
+
+.flexView {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.flex_item1 {
+    width: 90%;
+    justify-self: center;
+}
+
+.article h2 {
+    color: black;
+}
+
+.article h2,
+.article h3 {
+    margin-bottom: 5px;
+}
+
+.article p {
+    margin-top: 0%;
+    margin-bottom: 10px;
+}
+
+.article li {
+    list-style: inherit;
+    margin-left: 2%;
+}
+
+.divEditor {
+    width: 95%;
+    height: 300px;
+    overflow-y: scroll;
+    padding: 8px 10px 8px 20px;
+    background-color: white;
+}
+
+.divEditor li {
+    color: black;
+    font-size: 16px;
+    margin: 0px;
+    margin-left: 20px;
+}
+
+.subsection {
+    margin-top: 10px;
+    border-top: 1px dotted black;
+}
+
+.tablecontainer {
+    overflow-x: auto;
+    width: 90%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    background-color: white;
+}
+
+td,
+th {
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+input,
+textarea {
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    padding: 2px;
+    border: 1px dotted #0FA6A6;
+}
+
+select {
+    padding: 2px;
+    border: 1px dotted #0FA6A6
+}
+
+label[for$=id],
+label[for$=article] {
+    display: none;
+}
+
+label {
+    color: #0FA6A6
+}
+
+input[id$=DELETE],
+input[id=id_publish] {
+    display: inline-block;
+    width: 5px;
+    padding: 10px;
+}
+
+input[type=checkbox] {
+    width: 50px;
+    margin-left: -10px;
+}
+
+.buttons1 button {
+    width: 60px;
+}
+
+.buttons2 button {
+    width: 90px;
+}
+
+#id_keywords,
+#id_description {
+    height: 80px;
+}
+
+#id_username,
+#id_password {
+    width: 200px;
+}
+
+#loginButton {
+    width: 60px;
+    margin: 0px 30%;
+    background-color: #0FA6A6;
+    color: white;
+}
+
+#loginForm {
+    margin-top: 170px;
+    width: 100%;
+    padding: 0px 15%;
+}
+
+.submitButton {
+    width: 100px;
+    margin: 10px 30%;
+    background-color: #0FA6A6;
+    color: white;
+}
+
+#addSection {
+    margin: 0px 0px 20px 2.5%;
+}
+
+.backToTop {
+    position: fixed;
+    right: 5%;
+    top: 63%;
+    text-align: center;
+    background-color: rgba(1, 1, 1, 0.4);
+    width: 40px;
+    height: 50px;
+    z-index: 2000;
+    padding: 2px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    display: none;
+}
+
+.backToTop a {
+    color: white;
+    font-size: 30px;
+}
+
+footer {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+#footer,
+footer span {
+    width: 100%;
+    text-align: center;
+    color: rgba(230, 230, 230, 0.9);
+    text-indent: 0px
+}
+
+a,
+a sup {
+    text-decoration: none;
+    color: #0FA6A6;
+}
+
+a sup {
+    font-size: 14px;
+}
+
+@media screen and (min-width:360px) {
+    .logo {
+        width: 100px;
+    }
+    .nav form button {
+        margin-right: 5px;
+        font-size: 18px;
+    }
+    .submitButton {
+        margin: 10px 34%;
+    }
+}
+
+@media screen and (min-width:460px) {
+    .submitButton {
+        margin: 10px 38%;
+    }
+}
+
+@media screen and (min-width:481px) {
+    #buttonDiv {
+        top: 100px;
+    }
+    #buttonDiv button,
+    #buttonDiv select,
+    select option {
+        font-size: 16px;
+    }
+    #id_username,
+    #id_password {
+        width: 250px;
+    }
+    #loginButton {
+        margin: 0px 25%;
+    }
+    #loginForm {
+        margin-top: 170px;
+        width: 100%;
+        padding: 0px 20%;
+    }
+    .help {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width:500px) {
+    .logo {
+        width: 120px;
+    }
+    .sperator {
+        margin-top: 94px;
+    }
+    .flex_item1 {
+        width: 40%;
+    }
+    .submitButton {
+        margin: 10px 24%;
+    }
+}
+
+@media screen and (min-width:641px) {
+    .submitButton {
+        margin: 10px 30%;
+    }
+    #id_username,
+    #id_password {
+        width: 300px;
+    }
+    #loginButton {
+        margin: 0px 20%;
+    }
+    #loginForm {
+        margin-top: 170px;
+        width: 100%;
+        padding: 0px 25%;
+    }
+    #footer,
+    footer span {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .logo {
+        width: 150px;
+    }
+    .sperator {
+        margin-top: 100px;
+    }
+    .submitButton {
+        margin: 10px 40%;
+    }
+    #footer,
+    footer span {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:317px) {
+    p,
+    label,
+    .submitButton,
+    figcaption em,
+    .article li,
+    .article p a {
+        font-size: 16px;
+    }
+}
