@@ -55,6 +55,7 @@
     width: 80%;
     text-align: center;
     padding: 5px;
+    font-weight: 500;
 }
 
 
@@ -193,6 +194,9 @@
     .overlay {
         width: 94.5%;
         height: 40%;
+    }
+    .catlink2 {
+        font-size: 21px;
     }
 }
 
