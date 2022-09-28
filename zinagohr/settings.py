@@ -86,13 +86,24 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'zinago',
+#         'USER': 'root',
+#         'HOST': 'localhost',
+#         'PASSWORD': '',
+#         'PORT': ''
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'zinago',
-        'USER': 'root',
+        'NAME': os.environ.get("db_name"),
+        'USER':  os.environ.get("db_user"),
         'HOST': 'localhost',
-        'PASSWORD': '',
+        'PASSWORD':  os.environ.get("db_password"),
         'PORT': ''
     }
 }
