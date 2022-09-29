@@ -304,10 +304,16 @@ input[type=checkbox] {
 
 .buttons1 button {
     width: 60px;
+    margin: 3px;
+    background-color: white;
+    color: black;
 }
 
 .buttons2 button {
-    width: 90px;
+    width: 105px;
+    background-color: white;
+    color: black;
+    margin: 3px;
 }
 
 #id_keywords,
@@ -368,8 +374,9 @@ a sup {
     font-size: 14px;
 }
 
-#loginButton {
-    width: 70px;
+#loginButton,
+.submitButton {
+    width: 80px;
     margin: 10px auto;
     background-color: #0FA6A6;
     color: white;
@@ -388,15 +395,6 @@ a sup {
     .nav form button {
         margin-right: 5px;
         font-size: 18px;
-    }
-    .submitButton {
-        margin: 10px 34%;
-    }
-}
-
-@media screen and (min-width:460px) {
-    .submitButton {
-        margin: 10px 38%;
     }
 }
 
@@ -428,15 +426,9 @@ a sup {
     .flex_item1 {
         width: 40%;
     }
-    .submitButton {
-        margin: 10px 24%;
-    }
 }
 
 @media screen and (min-width:641px) {
-    .submitButton {
-        margin: 10px 30%;
-    }
     #id_username,
     #id_password {
         width: 300px;
@@ -453,9 +445,6 @@ a sup {
     }
     .sperator {
         margin-top: 100px;
-    }
-    .submitButton {
-        margin: 10px 40%;
     }
     #footer,
     footer span {
