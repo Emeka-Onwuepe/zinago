@@ -5,8 +5,8 @@
         {{form}}
         <input type="submit" id="loginButton" value="Login">
     </div>
+    <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
 </form>
-<p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
 {% endblock main %} {% block footer %}
 <footer style="position:relative; margin-top:193px">
     <p id="footer"> Copyright &copy; <span id="footerdate" style="padding: 0%"></span>. All rights reserved. Illumepedia.com <br /> Designed by Emeka Onwuepe. </p>
