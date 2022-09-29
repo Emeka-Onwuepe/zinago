@@ -4,8 +4,8 @@
     <div class="loginform">
         {{form}}
         <input type="submit" id="loginButton" value="Login">
+        <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
     </div>
-    <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
 </form>
 {% endblock main %} {% block footer %}
 <footer style="position:relative; margin-top:193px">
