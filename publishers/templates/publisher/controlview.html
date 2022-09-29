@@ -34,7 +34,7 @@
                 </form>
             </div>
             {% if article.publish and article.still_open %}
-            <span>Published and still open</span>
+            <span style="margin:5px;">Published and still open</span>
             <div class="buttons2">
                 <form action="{% url 'publisher:close' article.id 'close' %}" method="post">
                     {% csrf_token %}
@@ -50,7 +50,7 @@
                 </form>
             </div>
             {% elif article.publish and not article.still_open %}
-            <span>Published and closed</span>
+            <span style="margin:5px;">Published and closed</span>
             <div class="buttons2">
                 <form action="{% url 'publisher:close' article.id 'open' %}" method="post">
                     {% csrf_token %}
