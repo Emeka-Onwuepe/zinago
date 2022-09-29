@@ -320,26 +320,6 @@ input[type=checkbox] {
     width: 200px;
 }
 
-#loginButton {
-    width: 60px;
-    margin: 0px 30%;
-    background-color: #0FA6A6;
-    color: white;
-}
-
-#loginForm {
-    margin-top: 170px;
-    width: 100%;
-    padding: 0px 15%;
-}
-
-.submitButton {
-    width: 100px;
-    margin: 10px 30%;
-    background-color: #0FA6A6;
-    color: white;
-}
-
 #addSection {
     margin: 0px 0px 20px 2.5%;
 }
@@ -388,6 +368,19 @@ a sup {
     font-size: 14px;
 }
 
+#loginButton {
+    width: 70px;
+    margin: 10px auto;
+    background-color: #0FA6A6;
+    color: white;
+}
+
+#loginForm {
+    display: flex;
+    justify-content: center;
+    margin: 150px;
+}
+
 @media screen and (min-width:360px) {
     .logo {
         width: 100px;
@@ -420,14 +413,6 @@ a sup {
     #id_password {
         width: 250px;
     }
-    #loginButton {
-        margin: 0px 25%;
-    }
-    #loginForm {
-        margin-top: 170px;
-        width: 100%;
-        padding: 0px 20%;
-    }
     .help {
         font-size: 18px;
     }
@@ -455,14 +440,6 @@ a sup {
     #id_username,
     #id_password {
         width: 300px;
-    }
-    #loginButton {
-        margin: 0px 20%;
-    }
-    #loginForm {
-        margin-top: 170px;
-        width: 100%;
-        padding: 0px 25%;
     }
     #footer,
     footer span {
