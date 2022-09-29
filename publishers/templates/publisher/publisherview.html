@@ -50,7 +50,7 @@
     </div>
     <form action="{% url 'publisher:articleCreateView' user.username %}" method="post" class="flex_item1">
 
-        <legend>CREATE A NEW ARTICLE</legend>
+        <legend>CREATE A NEW JOB POST</legend>
         {% csrf_token %} {% for field in article_form %}
         <div class="formfield">
             {{field.errors}} {{field.label_tag}} {{field}} {% if field.help_text %}
