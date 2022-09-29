@@ -1,11 +1,10 @@
-{% extends 'publisher/register.html' %} {% block nav %}
-<form action="{% url 'publisher:register'%}" method="get">
-    {% csrf_token %}
-    <button type="submit">Register</button>
-</form> {% endblock nav %} {% block main %} {% if message %} {{message}} {% endif %}
+{% extends 'publisher/register.html' %} {% block nav %} {% endblock nav %} {% block main %} {% if message %} {{message}} {% endif %}
 <form action="{% url 'login:loginView' %}" method="post" id="loginForm">
-    {% csrf_token %} {{form}}
-    <input type="submit" id="loginButton" value="Login">
+    {% csrf_token %}
+    <div class="loginform">
+        {{form}}
+        <input type="submit" id="loginButton" value="Login">
+    </div>
 </form>
 <p><a href="{% url 'password_reset' %}">Forgot Password</a></p>
 {% endblock main %} {% block footer %}

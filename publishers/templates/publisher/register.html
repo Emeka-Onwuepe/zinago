@@ -31,7 +31,14 @@
         <header>
             <section class="menu">
                 <div id="logo-div">
-                    <a href="{% url 'publisher:publisherView' user.username 0 'view' %}"><img class="logo" src="{% static 'css/img/logo.png' %}" alt="logo" width="100%"></a>
+                        
+                        {% if user.username %}
+                        <a href="{% url 'publisher:publisherView' user.username 0 'view' %}">
+                            <img class="logo" src="{% static 'css/img/logo.png' %}" alt="logo" width="100%">
+                        </a>
+                        {% else %}
+                        <img class="logo" src="{% static 'css/img/logo.png' %}" alt="logo" width="100%">
+                        {% endif %}
                 </div>
                 <nav id="nav" class="nav">
                     {% block nav %}
